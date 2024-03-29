@@ -6,13 +6,14 @@ class TestBooksCollector:
     def test_add_new_book_add_two_books(self, collector):
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-        assert len(collector.books_genre) == 2
+        assert len(collector.get_books_genre()) == 2
 
     def test_set_book_genre(self, collector):
         collector.add_new_book('Бойцовский клуб')
         collector.set_book_genre('Бойцовский клуб', 'Фантастика')
 
-        assert collector.books_genre['Бойцовский клуб'] == 'Фантастика'
+        #assert collector.books_genre['Бойцовский клуб'] == 'Фантастика'
+        assert collector.get_book_genre('Бойцовский клуб') == 'Фантастика'
 
     def test_get_book_genre(self, collector):
         collector.add_new_book('Молчание ягнят')
@@ -64,7 +65,7 @@ class TestBooksCollector:
         collector.add_book_in_favorites('Рататуй')
         collector.add_book_in_favorites('Дюна')
 
-        assert collector.favorites == ['Рататуй', 'Дюна']
+        assert collector.get_list_of_favorites_books() == ['Рататуй', 'Дюна']
 
     def test_delete_book_in_favorites(self, collector):
         collector.add_new_book('Дюна')
@@ -74,5 +75,5 @@ class TestBooksCollector:
 
         collector.delete_book_from_favorites('Рататуй')
 
-        assert collector.favorites == ['Дюна']
+        assert collector.get_list_of_favorites_books() == ['Дюна']
 
