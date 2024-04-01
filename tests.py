@@ -12,7 +12,6 @@ class TestBooksCollector:
         collector.add_new_book('Бойцовский клуб')
         collector.set_book_genre('Бойцовский клуб', 'Фантастика')
 
-        #assert collector.books_genre['Бойцовский клуб'] == 'Фантастика'
         assert collector.get_book_genre('Бойцовский клуб') == 'Фантастика'
 
     def test_get_book_genre(self, collector):
